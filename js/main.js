@@ -56,6 +56,7 @@ function validarFormulario(event){
         $exito = document.querySelector("#exito");
         $form.className = 'oculto';
         $exito.className = '';
+        pageRedirect();
         
     }  
 
@@ -100,6 +101,19 @@ function borrarErroresAnteriores(){
         $error[i].remove();
     }
 }
+
+function pageRedirect(){
+    const delay = 5000; // time in milliseconds
+   
+    // Display message
+    document.querySelector("#message").innerHTML = "Por favor espere, esta siendo redirigido a una nueva página.";
+    
+    setTimeout(function(){
+     window.location = "wishlist.html";
+    },delay);
+    
+}
+
 
 const $form = document.querySelector("#carta-a-santa"); 
 $form.onsubmit = validarFormulario;
