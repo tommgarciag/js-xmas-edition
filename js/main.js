@@ -49,6 +49,8 @@ function validarFormulario(event){
         "descripcion-regalo": errorDescripcionRegalo,
     }
 
+    borrarErroresAnteriores();
+
     manejarErrores(errores);
 
     event.preventDefault();
@@ -67,6 +69,7 @@ function manejarErrores(errores){
 
             const $error = document.createElement('li');
             $error.innerText = error;
+            $error.className = 'liError';
             
             
 
@@ -78,6 +81,14 @@ function manejarErrores(errores){
         }
 
     });
+}
+
+
+function borrarErroresAnteriores(){
+    const $error = document.querySelectorAll(".liError");
+    for (let i=0; i< $error.length; i++){
+        $error[i].remove();
+    }
 }
 
 const $form = document.querySelector("#carta-a-santa"); 
