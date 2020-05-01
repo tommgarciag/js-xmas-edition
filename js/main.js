@@ -50,20 +50,29 @@ function validarFormulario(event){
     }
 
     borrarErroresAnteriores();
-
-    manejarErrores(errores);
+    const esExito = manejarErrores(errores) === 0;
+    
+    if(esExito){
+        $exito = document.querySelector("#exito");
+        $form.className = 'oculto';
+        $exito.className = '';
+        
+    }  
 
     event.preventDefault();
 }
 
 function manejarErrores(errores){
     const keys = Object.keys(errores);
+    const $errores = document.querySelector("#errores");
+    let cantidadErrores = 0;
     
 
     keys.forEach(function(key){
         const error = errores[key];
-        const $errores = document.querySelector("#errores");
+        
         if (error){
+            cantidadErrores++;
 
             $form[key].className = "error";
 
@@ -81,6 +90,7 @@ function manejarErrores(errores){
         }
 
     });
+    return cantidadErrores;
 }
 
 
