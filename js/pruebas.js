@@ -13,3 +13,13 @@ function probarValidarNombre() {
 }
 
 probarValidarNombre();
+
+function probarValidarCiudad(){
+    console.assert(
+        validarCiudad('') === 'Este campo no puede estar vacio', 'Validar ciudad no validó que la ciudad no sea vacío',
+    );
+
+    console.assert(validarCiudad('Chubut') === '', 'validarCiudad fallo con un nombre de ciudad valida',);
+}
+
+probarValidarCiudad();
